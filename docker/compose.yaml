@@ -4,7 +4,7 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
       args:
-        UID: "${UID:-1000}"
+        UID: "${USER_UID:-1000}"
         GID: "${GID:-1000}"
     image: robotics-lab:dev
     container_name: robotics_dev
@@ -20,12 +20,8 @@ services:
       - ../config:/ws/config
       - ../launch:/ws/launch
       - ../data:/ws/data
+      - ../build:/ws/build
+      - ../install:/ws/install
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - ws_build:/ws/build
-      - ws_install:/ws/install
     stdin_open: true
     tty: true
-
-volumes:
-  ws_build:
-  ws_install:

@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g ${GID} ${USERNAME} 2>/dev/null || true && \
-    useradd -u ${UID} -g ${GID} -s /bin/bash ${USERNAME} && \
+    useradd -m -u ${UID} -g ${GID} -s /bin/bash ${USERNAME} && \
     echo "source /opt/ros/humble/setup.bash" >> /home/${USERNAME}/.bashrc && \
     echo "[ -f /ws/install/setup.bash ] && source /ws/install/setup.bash" >> /home/${USERNAME}/.bashrc
 
